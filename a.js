@@ -9,20 +9,55 @@
 // cong((a, b) => {
 //     console.log(a+b)
 // })
+// 
+
 const request = require('request');
 
-function getTempCity(cityName){
+function getCong(a, b){
     return new Promise((resolve, reject) => {
-        const url =`http://api.openweathermap.org/data/2.5/weather?appid=86183a23377ed034aef7aad102f43d64&units=metric&q=${cityName}`
-        request(url, function (error, response, body) {
+        const url =`https://pheptinhonline.herokuapp.com/cong/${a}/${b}`
+        request(url, {json:true},function (error, response, body) {
         if(error) return reject(error)
-        if(JSON.parse(body).message) return reject(JSON.parse(body).message)
-        return resolve(JSON.parse(body).main.temp)
+        if(!body.success) return reject(body.message)
+        return resolve(body.message)
         });
     });
     
 }
-getTempCity("phuquoc")
-.then(data => console.log(data))
+function getTru(a, b){
+    return new Promise((resolve, reject) => {
+        const url =`https://pheptinhonline.herokuapp.com/cong/${a}/${b}`
+        request(url, {json:true},function (error, response, body) {
+        if(error) return reject(error)
+        if(!body.success) return reject(body.message)
+        return resolve(body.message)
+        });
+    });
+    
+}
+function getNhan(a, b){
+    return new Promise((resolve, reject) => {
+        const url =`https://pheptinhonline.herokuapp.com/cong/${a}/${b}`
+        request(url, {json:true},function (error, response, body) {
+        if(error) return reject(error)
+        if(!body.success) return reject(body.message)
+        return resolve(body.message)
+        });
+    });
+    
+}
+function getChia(a, b){
+    return new Promise((resolve, reject) => {
+        const url =`https://pheptinhonline.herokuapp.com/cong/${a}/${b}`
+        request(url, {json:true},function (error, response, body) {
+        if(error) return reject(error)
+        if(!body.success) return reject(body.message)
+        return resolve(body.message)
+        });
+    });
+    
+}
+getCong(4,'a')
+.then(tong => console.log(tong))
 .catch(error => console.log("loi " + error))
 
