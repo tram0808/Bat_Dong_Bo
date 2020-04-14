@@ -69,16 +69,17 @@ function getChia(a, b){
 // }
 // dthcn(10, 3)
 
-function chuvihcn(d, r) {
-    Promise.all ([
-        getCong(d, r),
-        getNhan(d, 2),
-        handleName('hello')
-    ])
-    .then(arryResult => console.log(arryResult))
-    .catch(error => console.log(error))
+// 
+
+async function chuvihcn(d, r) { 
+    try {
+        let tong= await getCong(d, r)
+        let kq = await getNhan(tong, 2)
+        console.log(kq)
+    } catch (error) {
+        console.log(tong)
+    }
+    
+    
 }
-function handleName(key) {
-    return Promise.resolve(key+ 'abc')
-}
-chuvihcn(1,3)
+chuvihcn(10, 5)
